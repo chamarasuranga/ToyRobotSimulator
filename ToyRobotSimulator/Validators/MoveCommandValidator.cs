@@ -13,10 +13,9 @@ namespace ToyRobotSimulator.Validators
     {
         public MoveCommandValidator(Robot state, TableSettings settings)
         {
-            RuleFor(_ => _).Must(_ => state.X.HasValue && state.Y.HasValue).WithMessage("Invalid command");
+            RuleFor(_ => _).Must(_ => state.X.HasValue && state.Y.HasValue).WithMessage("Invalid command,robot not placed.");
             RuleFor(_ => _).Must(_ =>
-            {
-                if (!state.X.HasValue || !state.Y.HasValue) return false;
+            {               
                 int x = state.X.Value, y = state.Y.Value;
                 switch (state.Facing)
                 {
@@ -26,7 +25,7 @@ namespace ToyRobotSimulator.Validators
                     case Direction.WEST: x--; break;
                 }
                 return x >= 0 && x < settings.Size && y >= 0 && y < settings.Size;
-            }).WithMessage("Invalid command");
+            }).WithMessage("Invalid command,robot cannot go out of table.");
         }
     }
 }

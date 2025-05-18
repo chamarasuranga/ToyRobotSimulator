@@ -11,6 +11,7 @@ namespace ToyRobotSimulator.Validators
 {
     public class RightCommandValidator : AbstractValidator<RightCommand>
     {
-        public RightCommandValidator(Robot state) => RuleFor(_ => _).Must(_ => state.X.HasValue && state.Y.HasValue).WithMessage("Invalid command");
+        public RightCommandValidator(Robot state) => RuleFor(_ => _)
+            .Must(_ => state.X.HasValue && state.Y.HasValue).WithMessage("Invalid command.robot not placed.");
     }
 }
