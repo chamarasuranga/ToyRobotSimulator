@@ -15,7 +15,7 @@ namespace ToyRobotSimulator.Handlers
         public PlaceCommandHandler(Robot robot) => _robot = robot;
         public Task<Unit> Handle(PlaceCommand request, CancellationToken _)
         {
-            _robot.X = request.X; _robot.Y = request.Y; _robot.Facing = request.Facing;
+            _robot.X = request.X; _robot.Y = request.Y; _robot.Facing = request.Facing ?? Direction.NORTH;
             return Task.FromResult(Unit.Value);
         }
     }

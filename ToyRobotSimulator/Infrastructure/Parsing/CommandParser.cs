@@ -5,19 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using ToyRobotSimulator.Infrastructure.Contracts;
+using ToyRobotSimulator.Infrastructure.Parsing;
 
-[AttributeUsage(AttributeTargets.Class)]
-public class CommandKeywordAttribute : Attribute
-{
-    public string Keyword { get; }
-    public bool HasArguments { get; }
 
-    public CommandKeywordAttribute(string keyword, bool hasArguments = false)
-    {
-        Keyword = keyword;
-        HasArguments = hasArguments;
-    }
-}
 public static class CommandParser
 {
     private static readonly Dictionary<string, Type> CommandTypes = Assembly

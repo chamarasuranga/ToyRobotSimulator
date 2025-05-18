@@ -13,9 +13,19 @@ namespace ToyRobotSimulator.Validators
     {
         public PlaceCommandValidator(TableSettings settings)
         {
-            RuleFor(cmd => cmd.X).InclusiveBetween(0, settings.Size - 1).WithMessage("Invalid command");
-            RuleFor(cmd => cmd.Y).InclusiveBetween(0, settings.Size - 1).WithMessage("Invalid command");
-            RuleFor(cmd => cmd.Facing).IsInEnum().WithMessage("Invalid command");
+            RuleFor(cmd => cmd.X)
+                .NotNull()
+                .InclusiveBetween(0, settings.Size - 1)
+                .WithMessage("Invalid position in command");
+
+            RuleFor(cmd => cmd.Y)
+                .NotNull()
+                .InclusiveBetween(0, settings.Size - 1)
+                .WithMessage("Invalid position in command");
+
+            RuleFor(cmd => cmd.Facing)
+                .NotNull()
+                .WithMessage("Invalid direction in command");
         }
     }
 }

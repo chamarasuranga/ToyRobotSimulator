@@ -14,39 +14,6 @@ using Microsoft.Extensions.Logging;
 
 namespace ToyRobotSimulator
 {
-  
-
-   
-  
-
-   
-
-   
-
-   
-
- 
-    
-  
-    
-
-  
-
-  
-
-  
-  
-
-
- 
-
- 
-
-  
-
-  
-
-
     public class Program
     {
         public static async Task Main(string[] args)
@@ -122,6 +89,10 @@ namespace ToyRobotSimulator
             if (command != null)
             {
                 await mediator.Send(command);
+            }
+            else 
+            {
+                Console.WriteLine("Invalid command.");
             }
         }
     }
